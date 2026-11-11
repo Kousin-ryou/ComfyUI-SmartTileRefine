@@ -1,0 +1,122 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "redcraft22INT8Convrot_2Krea2Edition.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "kuka\\krea2-kuka-style-v1_c1-st8000.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "ModelSamplingAuraFlow",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "shift": 1.15
+    }
+  },
+  "4": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3VL4B_textfp8_visionbf16_reference.safetensors",
+      "type": "krea2",
+      "device": "default"
+    }
+  },
+  "5": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_vae.safetensors"
+    }
+  },
+  "7": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "Wide landscape anime illustration, hand-painted textured brushwork, delicate clean linework. A quiet lakeside tram stop after rain in early summer. On the left foreground, a young adult woman with long dark brown hair, a cream raincoat over a muted blue dress and brown ankle boots sits sideways on a wooden bench, holding a closed red umbrella, her relaxed face in three-quarter profile looking toward the lake. On the right, one vintage mint-green tram is stopped beside the platform, warm amber light in its windows, clear perspective and simple coherent construction. Wet stone pavement reflects the tram and the pale sky. A small cluster of white hydrangeas grows beside the bench. Beyond the platform, a broad blue lake, a distant small white sailboat and layered lavender mountains under soft broken clouds. A few leafy branches frame the upper left corner. Open space over the lake in the center, distinct foreground and background, balanced cinematic composition, soft afternoon sunlight after rain, restrained teal, cream and warm gold palette, detailed environmental illustration, no writing, no lettering, no watermark.",
+      "clip": [
+        "4",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "",
+      "clip": [
+        "4",
+        0
+      ]
+    }
+  },
+  "20": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": {
+      "width": 1280,
+      "height": 720,
+      "batch_size": 1
+    }
+  },
+  "21": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "positive": [
+        "7",
+        0
+      ],
+      "negative": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "20",
+        0
+      ],
+      "seed": 2026111121,
+      "steps": 12,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "22": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "21",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    }
+  },
+  "23": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "22",
+        0
+      ],
+      "filename_prefix": "SmartTileRefine/lakeside_source"
+    }
+  }
+}

@@ -17,7 +17,7 @@
 
 ## 实机验证
 
-Windows 11、Python 3.12.10、ComfyUI 0.41.0、前端 1.55.17、RTX 4060 Laptop 8 GB、系统内存 32 GB。生成使用 Krea2 INT8、匹配的 Qwen 编码器和 VAE、4 步 Turbo LoRA。
+Windows 11、Python 3.12.10、ComfyUI 0.41.0、前端 1.55.17、RTX 4060 Laptop 8 GB、系统内存 32 GB。生成使用 Krea2 INT8、匹配的 Qwen 编码器和 VAE；已实际执行 Kuka 风格 LoRA 的 12 步原图与 5×4、8 步重绘，以及 4 步 Turbo LoRA 的两组演示。
 
 已实测独立分块、S 形分块、4x-AnimeSharp 模型放大、单次双块处理、不能整除的尺寸恢复、累计进度及浏览器接图、缩放和中英切换。公开演示的参数和耗时见[展示页](gallery.md)。
 

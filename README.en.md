@@ -6,6 +6,12 @@
 
 **一个节点完成分块图生图、可选模型放大、颜色校正与高低频融合，适合高分辨率插画精修。**
 
+## In-node tile visualization
+
+![Actual ComfyUI preview: grid and blue tile extension](docs/assets/preview.png)
+
+Inspect the real tile layout directly inside the main node. Change columns or rows to update the continuous white grid. Hover a tile to see its blue, boundary-clipped context region; move away to hide it. Changing extension briefly highlights the top-left tile. No image means no preview space. Preview and execution share the same coordinate planner; no generation is needed to inspect a layout.
+
 ## Install
 
 Clone into `ComfyUI/custom_nodes`:
@@ -41,8 +47,8 @@ The preview shows a continuous white grid. Hover a tile for its blue extension r
 ## Examples and documentation
 
 - [Generic workflow](examples/basic_img2img.json): select an installed checkpoint and image.
-- [Krea2 workflow](examples/krea2_refine.json): select matching diffusion/text/VAE models and optionally use the 4-step LoRA.
-- [Original demonstration gallery](docs/gallery.md): full images, real before/after crops, fresh prompts, seeds and settings.
+- [Krea2 workflow](examples/krea2_refine.json): the lakeside example uses Kuka LoRA at strength 1, 5×4 tiles and 8 refinement steps. Source generation uses 12 steps. The other two gallery cases use the 4-step Turbo LoRA.
+- [Original demonstration gallery](docs/gallery.md): full-image before/after comparisons, fresh prompts, seeds and settings.
 - [Illustrated technical explanation](docs/principles.md): exact coverage, bounded sequential context and frequency blending.
 - [Compatibility and validation](docs/compatibility.md): tested environment and practical constraints.
 

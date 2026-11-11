@@ -113,7 +113,7 @@ Git 安装在节点目录执行 `git pull`，安装 `requirements.txt`、重启�
 
 [Krea2 工作流](../examples/krea2_refine.json)使用独立的 diffusion model、文本编码器和 VAE。选择自己的已安装文件，文本编码器类型为 `krea2`，VAE 与模型匹配。
 
-公开演示采用 Krea2 INT8、4 步 Turbo LoRA、AuraFlow shift 1.15、Euler / Simple、4 步、CFG 1。**4 步设置依赖相应 LoRA**；不用该 LoRA 时按原模型要求设置。
+公开演示使用 Krea2 INT8、匹配的 Qwen 文本编码器与 VAE，CFG 1、Euler / Simple、AuraFlow shift 1.15。湖畔电车站使用 **Kuka 风格 LoRA 1.0，原图 12 步，分块重绘 8 步、5×4 块**；温室与茶屋使用 4 步 Turbo LoRA 和 4 步采样。不同 LoRA 的步数分开设置。
 
 本节点走普通图生图，不注入逐块 ReferenceLatent，不调用 Edit 适配器，不在内部进行视觉文本编码。
 
@@ -157,4 +157,4 @@ and the same hand-painted illustration style.
 
 ## English quick reference
 
-Install into `custom_nodes`, restart, refresh and search **Tile Refine**. Connect image, model, positive/negative conditioning and a matching VAE. Add an optional upscale model to enable enlargement. Start with 2×2 tiles, extension 15, denoise 0.20–0.30 and tiles per pass 1. Follow your base model's sampler/steps/CFG requirements. The 4-step Krea2 example requires the matching Turbo LoRA.
+Install into `custom_nodes`, restart, refresh and search **Tile Refine**. Connect image, model, positive/negative conditioning and a matching VAE. Add an optional upscale model to enable enlargement. Start with 2×2 tiles, extension 15, denoise 0.20–0.30 and tiles per pass 1. Follow your base model's sampler/steps/CFG requirements. The lakeside example uses Kuka LoRA and 8 refinement steps; the two Turbo cases use the matching 4-step LoRA.

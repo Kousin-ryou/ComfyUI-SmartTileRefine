@@ -6,6 +6,10 @@
 
 **An all-in-one ComfyUI node for tiled img2img refinement, optional model upscaling, color correction and frequency-aware blending.**
 
+![Kuka LoRA 横屏演示：雨后湖畔电车站](docs/assets/gallery/lakeside-refined.png)
+
+Kuka 风格 LoRA · 1280×720 → 2560×1440（2 倍）· 5×4 分块 · 8 步重绘。完整对照和参数见下方[效果对比](#效果对比)。
+
 ## 特点
 
 - 普通 `MODEL / VAE / CONDITIONING` 接线，仅输出融合后的 `IMAGE`。
@@ -14,6 +18,18 @@
 - 连接放大模型自动启用；未连接则保持输入尺寸。
 - 节点内高清预览：连续白色网格、蓝色悬停延展，无图折叠。
 - 简洁参数排布，自由调整节点大小，中英文跟随界面设置。
+
+## 节点内可视化分块
+
+![真实节点内预览：默认网格与蓝色延展](docs/assets/preview.png)
+
+**直接在主节点内检查分块位置和延展范围。** 上图来自实际 ComfyUI 界面，同一张横屏图使用 5×4 布局，左侧为默认状态，右侧为鼠标停留在一个图块上的状态。
+
+- **实时网格**：修改横向、纵向块数即可更新，白色分割线连续覆盖实际图像。
+- **蓝色延展**：鼠标放到某块，显示它生成时读取的实际范围；移出图片后隐藏。边缘块按图片边界裁剪。
+- **调整反馈**：修改分块延展时，左上角图块短暂显示对应范围。
+- **无图折叠**：没有图像时不占预览空间，不显示占位说明；图片接入后自动显示。
+- **规划一致**：预览和运行共用同一套坐标规划，调整网格无需运行图像生成。
 
 ## 安装
 
@@ -36,7 +52,7 @@ git clone https://github.com/Kousin-ryou/ComfyUI-SmartTileRefine.git
 
 ![处理流程](docs/assets/pipeline.png)
 
-下载[通用接线示例](examples/basic_img2img.json)或[Krea2 示例](examples/krea2_refine.json)。导入后选择自己的模型、VAE 和输入图片；示例不包含模型文件。Krea2 4 步 LoRA 的设置见[专用说明](docs/usage.md#krea2-示例)。
+下载[通用接线示例](examples/basic_img2img.json)或[Krea2 示例](examples/krea2_refine.json)。导入后选择自己的模型、VAE 和输入图片；示例不包含模型文件。Krea2 两种 LoRA 的设置见[专用说明](docs/usage.md#krea2-示例)。
 
 ## 输入与输出接口
 
@@ -86,7 +102,7 @@ CLIP 和提示词都放在节点外，按现有工作流正常编码。主节点
 
 ## Krea2 使用设置
 
-公开演示采用 Krea2 INT8、匹配的 Qwen 文本编码器与 VAE、4 步 Turbo LoRA，使用 **4 steps / CFG 1 / Euler / Simple / AuraFlow shift 1.15**。4 步设置依赖相应 LoRA；不用该 LoRA 时按原模型要求设置。
+公开演示使用 Krea2 INT8、匹配的 Qwen 文本编码器与 VAE，CFG 1、Euler / Simple、AuraFlow shift 1.15。湖畔电车站使用 **Kuka 风格 LoRA 1.0，原图 12 步，分块重绘 8 步、5×4 块**；温室与茶屋使用 4 步 Turbo LoRA 和 4 步采样。不同 LoRA 的步数分开设置。
 
 导入 [Krea2 示例](examples/krea2_refine.json)后选择自己的模型和图片。放大输入接普通 `UpscaleModelLoader`；已有外部放大图像则保持该输入断开。当前流程是正常图生图，不使用内部视觉提示词或 Edit 专用适配器。
 
@@ -100,36 +116,30 @@ and the same hand-painted illustration style.
 
 ## 效果对比
 
-三组原图均使用本项目新编写的提示词重新生成。每组比较三个条件：
+三组原图均使用本项目新编写的提示词重新生成。每组只比较分块前和分块后的完整图像，使用相同视野展示。分块后为本节点实际输出，图片未额外锐化、调色或修饰。
 
-- **(a) 原图**：Krea2 文生图输出。
-- **(b) 仅模型放大**：4x-AnimeSharp，目标倍率 1.5，重绘强度 0。
-- **(c) 分块重绘**：相同放大模型与倍率，再执行本节点的局部图生图、颜色校正和融合。
+共同模型设置：Krea2 INT8、匹配的 Qwen 文本编码器与 VAE，CFG 1、Euler / Simple、AuraFlow shift 1.15。每组的 LoRA、放大倍率和步数分别列于下表。测试设备为 RTX 4060 Laptop 8 GB、32 GB RAM。
 
-所有列使用相同视野。局部图取相同输出坐标，以 2× 像素显示；原图仅为坐标对齐做 Lanczos 放大。图中蓝框和编号标出局部位置，图片未额外锐化、调色或修饰。
+### 1. 雨后湖畔电车站 / Lakeside tram stop
 
-共同模型设置：Krea2 INT8＋4 步 Turbo LoRA，4 steps、CFG 1、Euler / Simple、AuraFlow shift 1.15。测试设备为 RTX 4060 Laptop 8 GB、32 GB RAM。
+![分块前后整图对比](docs/assets/gallery/lakeside-comparison.webp)
 
-### 1. 日光下的星图师 / Sunlit cartographer
+**图 1.** 左：分块前原图；右：分块后完整输出。
 
-![整图对比](docs/assets/gallery/cartographer-comparison.webp)
-
-**图 1a.** (a) 原图；(b) 仅模型放大；(c) 分块重绘。蓝框 1、2 对应下一幅局部图。
-
-![同坐标局部对比](docs/assets/gallery/cartographer-detail.webp)
-
-**图 1b.** 相同坐标的两个局部区域，比较轮廓、纹理与颜色变化。
-
-[原图 PNG](docs/assets/gallery/cartographer-source.png) · [模型放大 PNG](docs/assets/gallery/cartographer-model-only.png) · [分块重绘 PNG](docs/assets/gallery/cartographer-refined.png)
+[分块前 PNG](docs/assets/gallery/lakeside-source.png) · [分块后 PNG](docs/assets/gallery/lakeside-refined.png)
 
 | 参数 | 数值 |
 | --- | --- |
-| 尺寸 | 640×896 → 960×1344 |
-| 分块 / 延展 | 2×2 / 每侧 15% |
-| 重绘方式 / 强度 | 分块独立重绘 / 0.2 |
-| 种子 | 原图 2026111101；精修 2026111201 |
+| 尺寸 | 1280×720 → 2560×1440 |
+| 放大模型 / 倍率 | 4x-AnimeSharp / 2× |
+| LoRA / 权重 | `kuka\krea2-kuka-style-v1_c1-st8000.safetensors` / 1.0 |
+| 原图步数 / 重绘步数 | 12 / 8 |
+| CFG / 采样 | 1 / Euler + Simple |
+| 分块 / 延展 | 5×4 / 每侧 15% |
+| 重绘方式 / 强度 | 分块独立重绘 / 0.25 |
+| 种子 | 原图 2026111121；精修 2026111221 |
 | 颜色校正 / 单次数量 | 开启 0.50 / 1 |
-| 总任务耗时 | 原图 120.04 s；分块重绘 135.42 s |
+| 总任务耗时 | 原图 130.63 s；分块重绘 631.81 s |
 
 <details>
 <summary>提示词 / Prompts</summary>
@@ -137,34 +147,38 @@ and the same hand-painted illustration style.
 **原图提示词**
 
 ```text
-An original hand-painted anime illustration of an adult female celestial cartographer in a sunlit observatory, waist-up portrait, warm brown skin, short dark teal hair, amber eyes, ivory linen shirt under a navy embroidered vest, one hand gently holding a brass drafting compass above a wooden desk, celestial charts and a small brass telescope in the background, warm sunlight through a tall arched window, deep blue and muted gold palette, delicate fabric embroidery, clear elegant linework, restrained painterly shading, coherent anatomy, one person, no lettering, no watermark.
+Wide landscape anime illustration, hand-painted textured brushwork, delicate clean linework. A quiet lakeside tram stop after rain in early summer. On the left foreground, a young adult woman with long dark brown hair, a cream raincoat over a muted blue dress and brown ankle boots sits sideways on a wooden bench, holding a closed red umbrella, her relaxed face in three-quarter profile looking toward the lake. On the right, one vintage mint-green tram is stopped beside the platform, warm amber light in its windows, clear perspective and simple coherent construction. Wet stone pavement reflects the tram and the pale sky. A small cluster of white hydrangeas grows beside the bench. Beyond the platform, a broad blue lake, a distant small white sailboat and layered lavender mountains under soft broken clouds. A few leafy branches frame the upper left corner. Open space over the lake in the center, distinct foreground and background, balanced cinematic composition, soft afternoon sunlight after rain, restrained teal, cream and warm gold palette, detailed environmental illustration, no writing, no lettering, no watermark.
 ```
 
 **分块重绘提示词**
 
 ```text
-Preserve the existing illustration, composition, anatomy and colors. Refine fine ink contours, fabric weave, embroidered seams, small brass engravings and painted surface texture. Restrained clean detail, soft natural light, consistent hand-painted anime finish.
+Hand-painted anime environmental illustration, delicate clean linework, natural facial features, textured fabric, coherent tram windows and metal edges, subtle wet stone reflections, soft foliage, restrained teal cream and warm gold colors, preserve the existing composition and painted texture.
 ```
 
 负面提示词为空。
 
 </details>
 
+[原图生成工作流（API JSON）](examples/lakeside_source_api.json) · [分块重绘工作流](examples/krea2_refine.json)
+
+原图使用 Kuka 风格 LoRA、12 步生成；分块精修使用同一 LoRA、8 步。
+
 ### 2. 玻璃温室 / Botanical glasshouse
 
-![整图对比](docs/assets/gallery/glasshouse-comparison.webp)
+![分块前后整图对比](docs/assets/gallery/glasshouse-comparison.webp)
 
-**图 2a.** (a) 原图；(b) 仅模型放大；(c) 分块重绘。蓝框 1、2 对应下一幅局部图。
+**图 2.** 左：分块前原图；右：分块后完整输出。
 
-![同坐标局部对比](docs/assets/gallery/glasshouse-detail.webp)
-
-**图 2b.** 相同坐标的两个局部区域，比较轮廓、纹理与颜色变化。
-
-[原图 PNG](docs/assets/gallery/glasshouse-source.png) · [模型放大 PNG](docs/assets/gallery/glasshouse-model-only.png) · [分块重绘 PNG](docs/assets/gallery/glasshouse-refined.png)
+[分块前 PNG](docs/assets/gallery/glasshouse-source.png) · [分块后 PNG](docs/assets/gallery/glasshouse-refined.png)
 
 | 参数 | 数值 |
 | --- | --- |
 | 尺寸 | 896×640 → 1344×960 |
+| 放大模型 / 倍率 | 4x-AnimeSharp / 1.5× |
+| LoRA / 权重 | `krea2\krea2_turbo_4step_rank_64_lora_comfyui.safetensors` / 1.0 |
+| 原图步数 / 重绘步数 | 4 / 4 |
+| CFG / 采样 | 1 / Euler + Simple |
 | 分块 / 延展 | 2×2 / 每侧 15% |
 | 重绘方式 / 强度 | S形依次重绘 / 0.24 |
 | 种子 | 原图 2026111102；精修 2026111202 |
@@ -192,19 +206,19 @@ Keep the existing architectural perspective, plant placement, palette and gouach
 
 ### 3. 山间茶屋 / Mountain teahouse
 
-![整图对比](docs/assets/gallery/teahouse-comparison.webp)
+![分块前后整图对比](docs/assets/gallery/teahouse-comparison.webp)
 
-**图 3a.** (a) 原图；(b) 仅模型放大；(c) 分块重绘。蓝框 1、2 对应下一幅局部图。
+**图 3.** 左：分块前原图；右：分块后完整输出。
 
-![同坐标局部对比](docs/assets/gallery/teahouse-detail.webp)
-
-**图 3b.** 相同坐标的两个局部区域，比较轮廓、纹理与颜色变化。
-
-[原图 PNG](docs/assets/gallery/teahouse-source.png) · [模型放大 PNG](docs/assets/gallery/teahouse-model-only.png) · [分块重绘 PNG](docs/assets/gallery/teahouse-refined.png)
+[分块前 PNG](docs/assets/gallery/teahouse-source.png) · [分块后 PNG](docs/assets/gallery/teahouse-refined.png)
 
 | 参数 | 数值 |
 | --- | --- |
 | 尺寸 | 768×768 → 1152×1152 |
+| 放大模型 / 倍率 | 4x-AnimeSharp / 1.5× |
+| LoRA / 权重 | `krea2\krea2_turbo_4step_rank_64_lora_comfyui.safetensors` / 1.0 |
+| 原图步数 / 重绘步数 | 4 / 4 |
+| CFG / 采样 | 1 / Euler + Simple |
 | 分块 / 延展 | 3×3 / 每侧 15% |
 | 重绘方式 / 强度 | 分块独立重绘 / 0.3 |
 | 种子 | 原图 2026111103；精修 2026111203 |

@@ -82,7 +82,7 @@
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "Preserve the existing illustration, composition, anatomy and colors. Refine fine ink contours, fabric weave, embroidered seams, small brass engravings and painted surface texture. Restrained clean detail, soft natural light, consistent hand-painted anime finish."
+        "Hand-painted anime environmental illustration, delicate clean linework, natural facial features, textured fabric, coherent tram windows and metal edges, subtle wet stone reflections, soft foliage, restrained teal cream and warm gold colors, preserve the existing composition and painted texture."
       ]
     },
     {
@@ -155,7 +155,7 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "cartographer-source.png"
+        "lakeside-source.png"
       ]
     },
     {
@@ -217,18 +217,18 @@
         "Node name for S&R": "SmartTileRefine"
       },
       "widgets_values": [
-        1.5,
-        2,
-        2,
+        2.0,
+        5,
+        4,
         15,
         "Independent tiles",
-        2026111201,
+        2026111221,
         "fixed",
         24,
         6.0,
         "euler",
         "simple",
-        0.2,
+        0.25,
         true,
         0.5,
         1

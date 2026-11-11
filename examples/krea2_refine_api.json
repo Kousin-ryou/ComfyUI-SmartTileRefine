@@ -13,7 +13,7 @@
         "1",
         0
       ],
-      "lora_name": "krea2\\krea2_turbo_4step_rank_64_lora_comfyui.safetensors",
+      "lora_name": "kuka\\krea2-kuka-style-v1_c1-st8000.safetensors",
       "strength_model": 1.0
     }
   },
@@ -44,7 +44,7 @@
   "7": {
     "class_type": "CLIPTextEncode",
     "inputs": {
-      "text": "Preserve the existing illustration, composition, anatomy and colors. Refine fine ink contours, fabric weave, embroidered seams, small brass engravings and painted surface texture. Restrained clean detail, soft natural light, consistent hand-painted anime finish.",
+      "text": "Hand-painted anime environmental illustration, delicate clean linework, natural facial features, textured fabric, coherent tram windows and metal edges, subtle wet stone reflections, soft foliage, restrained teal cream and warm gold colors, preserve the existing composition and painted texture.",
       "clip": [
         "4",
         0
@@ -64,7 +64,7 @@
   "6": {
     "class_type": "LoadImage",
     "inputs": {
-      "image": "cartographer-source.png"
+      "image": "lakeside-source.png"
     }
   },
   "11": {
@@ -100,17 +100,17 @@
         "11",
         0
       ],
-      "upscale_by": 1.5,
-      "columns": 2,
-      "rows": 2,
+      "upscale_by": 2.0,
+      "columns": 5,
+      "rows": 4,
       "expand_percent": 15,
       "redraw_mode": "Independent tiles",
-      "seed": 2026111201,
-      "steps": 4,
+      "seed": 2026111221,
+      "steps": 8,
       "cfg": 1.0,
       "sampler_name": "euler",
       "scheduler": "simple",
-      "denoise": 0.2,
+      "denoise": 0.25,
       "color_correction": true,
       "color_strength": 0.5,
       "batch_size": 1

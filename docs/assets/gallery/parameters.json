@@ -1,15 +1,12 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "date": "2026-11-11",
   "provenance": "Fresh prompts and new Krea2 text-to-image sources generated specifically for this release. No user workflow prompts or pre-existing artwork were reused.",
   "model_stack": {
     "diffusion": "redcraft22INT8Convrot_2Krea2Edition.safetensors",
-    "lora": "krea2_turbo_4step_rank_64_lora_comfyui.safetensors",
-    "lora_strength": 1.0,
     "clip": "qwen3VL4B_textfp8_visionbf16_reference.safetensors",
     "vae": "qwen_image_vae.safetensors",
     "sampling_shift": 1.15,
-    "steps": 4,
     "cfg": 1.0,
     "sampler": "euler",
     "scheduler": "simple",
@@ -17,52 +14,42 @@
   },
   "cases": [
     {
-      "id": "cartographer",
-      "title": "日光下的星图师 / Sunlit cartographer",
-      "width": 640,
-      "height": 896,
-      "seed": 2026111101,
+      "id": "lakeside",
+      "title": "雨后湖畔电车站 / Lakeside tram stop",
+      "width": 1280,
+      "height": 720,
+      "seed": 2026111121,
+      "columns": 5,
+      "rows": 4,
       "mode": "Independent tiles",
-      "columns": 2,
-      "rows": 2,
-      "denoise": 0.2,
-      "prompt": "An original hand-painted anime illustration of an adult female celestial cartographer in a sunlit observatory, waist-up portrait, warm brown skin, short dark teal hair, amber eyes, ivory linen shirt under a navy embroidered vest, one hand gently holding a brass drafting compass above a wooden desk, celestial charts and a small brass telescope in the background, warm sunlight through a tall arched window, deep blue and muted gold palette, delicate fabric embroidery, clear elegant linework, restrained painterly shading, coherent anatomy, one person, no lettering, no watermark.",
-      "refine": "Preserve the existing illustration, composition, anatomy and colors. Refine fine ink contours, fabric weave, embroidered seams, small brass engravings and painted surface texture. Restrained clean detail, soft natural light, consistent hand-painted anime finish.",
+      "denoise": 0.25,
+      "steps": 8,
+      "cfg": 1.0,
+      "lora": "kuka\\krea2-kuka-style-v1_c1-st8000.safetensors",
+      "lora_strength": 1.0,
+      "prompt": "Wide landscape anime illustration, hand-painted textured brushwork, delicate clean linework. A quiet lakeside tram stop after rain in early summer. On the left foreground, a young adult woman with long dark brown hair, a cream raincoat over a muted blue dress and brown ankle boots sits sideways on a wooden bench, holding a closed red umbrella, her relaxed face in three-quarter profile looking toward the lake. On the right, one vintage mint-green tram is stopped beside the platform, warm amber light in its windows, clear perspective and simple coherent construction. Wet stone pavement reflects the tram and the pale sky. A small cluster of white hydrangeas grows beside the bench. Beyond the platform, a broad blue lake, a distant small white sailboat and layered lavender mountains under soft broken clouds. A few leafy branches frame the upper left corner. Open space over the lake in the center, distinct foreground and background, balanced cinematic composition, soft afternoon sunlight after rain, restrained teal, cream and warm gold palette, detailed environmental illustration, no writing, no lettering, no watermark.",
+      "refine": "Hand-painted anime environmental illustration, delicate clean linework, natural facial features, textured fabric, coherent tram windows and metal edges, subtle wet stone reflections, soft foliage, restrained teal cream and warm gold colors, preserve the existing composition and painted texture.",
       "source_run": {
-        "prompt_id": "ae885893-16a3-443a-b269-e12e3ba7f5ab",
-        "seconds": 120.04,
+        "prompt_id": "cbf173bf-730f-40b0-988d-e45e2d2559e7",
+        "seconds": 130.63,
         "progress_updates": 0
       },
+      "source_steps": 12,
       "refine_run": {
-        "prompt_id": "5a9b35e7-e742-4b4b-acc2-202adb95f83f",
-        "seconds": 135.42,
-        "progress_updates": 30
+        "prompt_id": "808a57c2-5966-44c0-90a7-27b7fb6d1c0e",
+        "seconds": 631.81,
+        "progress_updates": null,
+        "monitor": "Completed native ComfyUI history after preview connection ended"
       },
       "output_size": [
-        960,
-        1344
+        2560,
+        1440
       ],
       "extension": 15,
-      "upscale_by": 1.5,
+      "upscale_by": 2.0,
       "upscale_model": "4x-AnimeSharp",
       "color_strength": 0.5,
-      "refine_seed": 2026111201,
-      "detail_regions": [
-        {
-          "x0": 456,
-          "y0": 754,
-          "x1": 696,
-          "y1": 994,
-          "description": "衣物刺绣"
-        },
-        {
-          "x0": 370,
-          "y0": 216,
-          "x1": 610,
-          "y1": 456,
-          "description": "面部线条"
-        }
-      ]
+      "refine_seed": 2026111221
     },
     {
       "id": "glasshouse",
@@ -95,22 +82,10 @@
       "upscale_model": "4x-AnimeSharp",
       "color_strength": 0.5,
       "refine_seed": 2026111202,
-      "detail_regions": [
-        {
-          "x0": 149,
-          "y0": 475,
-          "x1": 389,
-          "y1": 715,
-          "description": "叶片与花盆"
-        },
-        {
-          "x0": 754,
-          "y0": 91,
-          "x1": 994,
-          "y1": 331,
-          "description": "屋顶与立柱"
-        }
-      ]
+      "steps": 4,
+      "cfg": 1.0,
+      "lora": "krea2\\krea2_turbo_4step_rank_64_lora_comfyui.safetensors",
+      "lora_strength": 1.0
     },
     {
       "id": "teahouse",
@@ -143,23 +118,12 @@
       "upscale_model": "4x-AnimeSharp",
       "color_strength": 0.5,
       "refine_seed": 2026111203,
-      "detail_regions": [
-        {
-          "x0": 468,
-          "y0": 329,
-          "x1": 708,
-          "y1": 569,
-          "description": "屋顶瓦片"
-        },
-        {
-          "x0": 444,
-          "y0": 698,
-          "x1": 684,
-          "y1": 938,
-          "description": "石桥与植被"
-        }
-      ]
+      "steps": 4,
+      "cfg": 1.0,
+      "lora": "krea2\\krea2_turbo_4step_rank_64_lora_comfyui.safetensors",
+      "lora_strength": 1.0
     }
   ],
-  "comparison_display": "Whole-image panels use the same field of view. Detail crops use identical output coordinates and a 2x display. Source is aligned with Lanczos; model-only and final are real output pixels. No additional sharpening or retouching."
+  "comparison_display": "Two full-image panels: before (input) and after (complete node output), using the same field of view. No detail crops, extra sharpening, color grading or retouching.",
+  "model_settings": "LoRA, strength and step count are specified per case. Other model settings are shared."
 }

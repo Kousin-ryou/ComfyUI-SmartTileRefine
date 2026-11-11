@@ -1,14 +1,15 @@
-# v1.0.0 · 分块高清重绘 / Smart Tile Refine
+# v1.0.1 · 分块高清重绘 / Smart Tile Refine
 
-首次公开发布。一个 ComfyUI 节点完成分块图生图、可选模型放大、颜色校正和高低频融合。
+更新节点内可视化展示与演示材料。一个 ComfyUI 节点完成分块图生图、可选模型放大、颜色校正和高低频融合。
 
-First public release. One ComfyUI node for tiled img2img refinement, optional model upscaling, color correction and frequency-aware blending.
+Updated in-node visualization and demonstration materials. One ComfyUI node for tiled img2img refinement, optional model upscaling, color correction and frequency-aware blending.
 
 - 标准 MODEL、VAE、正负 CONDITIONING 接线，一个 IMAGE 输出。
 - 自定义横纵块数、百分比延展，独立或 S 形依次重绘。
 - 节点内预览、蓝色悬停延展、自由缩放、中英文界面。
 - 完整安装、参数、Krea2 示例、排错及原理说明。
-- 三组全新图像；原图、仅模型放大、分块重绘整图和同坐标局部对比。
+- Kuka LoRA 横屏演示：2 倍放大、5×4 分块、8 步重绘，仅保留整图比较；原图 12 步生成。
+- 三组全新图像；分块前后两列整图对比。
 
 ## 安装 / Installation
 

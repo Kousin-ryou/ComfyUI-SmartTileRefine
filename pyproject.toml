@@ -1,6 +1,6 @@
 [project]
 name = "smart-tile-refine"
-version = "1.0.0"
+version = "1.0.1"
 description = "Integrated img2img tiled refinement with an interactive in-node preview"
 requires-python = ">=3.10"
 license = { file = "LICENSE" }
