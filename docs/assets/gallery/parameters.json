@@ -1,0 +1,165 @@
+{
+  "version": "1.0.0",
+  "date": "2026-11-11",
+  "provenance": "Fresh prompts and new Krea2 text-to-image sources generated specifically for this release. No user workflow prompts or pre-existing artwork were reused.",
+  "model_stack": {
+    "diffusion": "redcraft22INT8Convrot_2Krea2Edition.safetensors",
+    "lora": "krea2_turbo_4step_rank_64_lora_comfyui.safetensors",
+    "lora_strength": 1.0,
+    "clip": "qwen3VL4B_textfp8_visionbf16_reference.safetensors",
+    "vae": "qwen_image_vae.safetensors",
+    "sampling_shift": 1.15,
+    "steps": 4,
+    "cfg": 1.0,
+    "sampler": "euler",
+    "scheduler": "simple",
+    "upscaler": "4x-AnimeSharp.pth"
+  },
+  "cases": [
+    {
+      "id": "cartographer",
+      "title": "日光下的星图师 / Sunlit cartographer",
+      "width": 640,
+      "height": 896,
+      "seed": 2026111101,
+      "mode": "Independent tiles",
+      "columns": 2,
+      "rows": 2,
+      "denoise": 0.2,
+      "prompt": "An original hand-painted anime illustration of an adult female celestial cartographer in a sunlit observatory, waist-up portrait, warm brown skin, short dark teal hair, amber eyes, ivory linen shirt under a navy embroidered vest, one hand gently holding a brass drafting compass above a wooden desk, celestial charts and a small brass telescope in the background, warm sunlight through a tall arched window, deep blue and muted gold palette, delicate fabric embroidery, clear elegant linework, restrained painterly shading, coherent anatomy, one person, no lettering, no watermark.",
+      "refine": "Preserve the existing illustration, composition, anatomy and colors. Refine fine ink contours, fabric weave, embroidered seams, small brass engravings and painted surface texture. Restrained clean detail, soft natural light, consistent hand-painted anime finish.",
+      "source_run": {
+        "prompt_id": "ae885893-16a3-443a-b269-e12e3ba7f5ab",
+        "seconds": 120.04,
+        "progress_updates": 0
+      },
+      "refine_run": {
+        "prompt_id": "5a9b35e7-e742-4b4b-acc2-202adb95f83f",
+        "seconds": 135.42,
+        "progress_updates": 30
+      },
+      "output_size": [
+        960,
+        1344
+      ],
+      "extension": 15,
+      "upscale_by": 1.5,
+      "upscale_model": "4x-AnimeSharp",
+      "color_strength": 0.5,
+      "refine_seed": 2026111201,
+      "detail_regions": [
+        {
+          "x0": 456,
+          "y0": 754,
+          "x1": 696,
+          "y1": 994,
+          "description": "衣物刺绣"
+        },
+        {
+          "x0": 370,
+          "y0": 216,
+          "x1": 610,
+          "y1": 456,
+          "description": "面部线条"
+        }
+      ]
+    },
+    {
+      "id": "glasshouse",
+      "title": "玻璃温室 / Botanical glasshouse",
+      "width": 896,
+      "height": 640,
+      "seed": 2026111102,
+      "mode": "S-shaped sequence",
+      "columns": 2,
+      "rows": 2,
+      "denoise": 0.24,
+      "prompt": "An original gouache and ink illustration of a quiet Victorian botanical glasshouse interior, a narrow red brick path curves between large fern beds, terracotta pots with varied leafy plants, slim green painted iron columns support tall glass panes, warm morning sunlight, soft leaf shadows on the ground, one shallow stone fountain in the distance, natural asymmetrical arrangement, no people, sage green, terracotta and creamy yellow palette, carefully drawn architectural perspective, richly varied foliage with clear shapes, matte paper texture, no lettering, no watermark.",
+      "refine": "Keep the existing architectural perspective, plant placement, palette and gouache style. Refine leaf veins, iron joints, terracotta surfaces, brick edges and subtle painted textures. Preserve broad soft lighting and avoid excessive grain.",
+      "source_run": {
+        "prompt_id": "20659baa-54b8-407e-be25-416d99ac37cf",
+        "seconds": 39.92,
+        "progress_updates": 0
+      },
+      "refine_run": {
+        "prompt_id": "d60cb596-f2f6-4a63-add5-869e0e15547d",
+        "seconds": 86.61,
+        "progress_updates": 29
+      },
+      "output_size": [
+        1344,
+        960
+      ],
+      "extension": 15,
+      "upscale_by": 1.5,
+      "upscale_model": "4x-AnimeSharp",
+      "color_strength": 0.5,
+      "refine_seed": 2026111202,
+      "detail_regions": [
+        {
+          "x0": 149,
+          "y0": 475,
+          "x1": 389,
+          "y1": 715,
+          "description": "叶片与花盆"
+        },
+        {
+          "x0": 754,
+          "y0": 91,
+          "x1": 994,
+          "y1": 331,
+          "description": "屋顶与立柱"
+        }
+      ]
+    },
+    {
+      "id": "teahouse",
+      "title": "山间茶屋 / Mountain teahouse",
+      "width": 768,
+      "height": 768,
+      "seed": 2026111103,
+      "mode": "Independent tiles",
+      "columns": 3,
+      "rows": 3,
+      "denoise": 0.3,
+      "prompt": "An original isometric fantasy illustration of a small cedar teahouse on a mossy mountain ledge, a curved green ceramic tile roof, warm amber light inside paper windows, a stone footbridge crosses a narrow stream beside the house, a wind-shaped pine tree on one side, ferns and small rounded stones, layered misty mountains far behind, dusk blue atmosphere with warm accents, a balanced square composition, clear miniature architecture, hand-painted game environment art, varied organic textures, no people, no lettering, no watermark.",
+      "refine": "Preserve the existing isometric geometry and all object positions. Refine cedar wood grain, individual ceramic roof tiles, moss, stone edges, pine needles and small water ripples. Keep the same hand-painted fantasy illustration, atmospheric blue and amber colors, clean controlled texture.",
+      "source_run": {
+        "prompt_id": "75a46b93-e368-41ff-be53-4e5dea9d43cc",
+        "seconds": 29.04,
+        "progress_updates": 0
+      },
+      "refine_run": {
+        "prompt_id": "7e65bce4-3275-44c5-87c0-9acd51eb3f1d",
+        "seconds": 148.79,
+        "progress_updates": 53
+      },
+      "output_size": [
+        1152,
+        1152
+      ],
+      "extension": 15,
+      "upscale_by": 1.5,
+      "upscale_model": "4x-AnimeSharp",
+      "color_strength": 0.5,
+      "refine_seed": 2026111203,
+      "detail_regions": [
+        {
+          "x0": 468,
+          "y0": 329,
+          "x1": 708,
+          "y1": 569,
+          "description": "屋顶瓦片"
+        },
+        {
+          "x0": 444,
+          "y0": 698,
+          "x1": 684,
+          "y1": 938,
+          "description": "石桥与植被"
+        }
+      ]
+    }
+  ],
+  "comparison_display": "Whole-image panels use the same field of view. Detail crops use identical output coordinates and a 2x display. Source is aligned with Lanczos; model-only and final are real output pixels. No additional sharpening or retouching."
+}

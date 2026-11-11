@@ -1,0 +1,129 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "redcraft22INT8Convrot_2Krea2Edition.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "krea2\\krea2_turbo_4step_rank_64_lora_comfyui.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "ModelSamplingAuraFlow",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "shift": 1.15
+    }
+  },
+  "4": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3VL4B_textfp8_visionbf16_reference.safetensors",
+      "type": "krea2",
+      "device": "default"
+    }
+  },
+  "5": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_vae.safetensors"
+    }
+  },
+  "7": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "Preserve the existing illustration, composition, anatomy and colors. Refine fine ink contours, fabric weave, embroidered seams, small brass engravings and painted surface texture. Restrained clean detail, soft natural light, consistent hand-painted anime finish.",
+      "clip": [
+        "4",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "",
+      "clip": [
+        "4",
+        0
+      ]
+    }
+  },
+  "6": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "cartographer-source.png"
+    }
+  },
+  "11": {
+    "class_type": "UpscaleModelLoader",
+    "inputs": {
+      "model_name": "4x-AnimeSharp.pth"
+    }
+  },
+  "9": {
+    "class_type": "SmartTileRefine",
+    "inputs": {
+      "image": [
+        "6",
+        0
+      ],
+      "model": [
+        "3",
+        0
+      ],
+      "positive": [
+        "7",
+        0
+      ],
+      "negative": [
+        "8",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ],
+      "upscale_model": [
+        "11",
+        0
+      ],
+      "upscale_by": 1.5,
+      "columns": 2,
+      "rows": 2,
+      "expand_percent": 15,
+      "redraw_mode": "Independent tiles",
+      "seed": 2026111201,
+      "steps": 4,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 0.2,
+      "color_correction": true,
+      "color_strength": 0.5,
+      "batch_size": 1
+    }
+  },
+  "10": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "9",
+        0
+      ],
+      "filename_prefix": "SmartTileRefine/result"
+    }
+  }
+}

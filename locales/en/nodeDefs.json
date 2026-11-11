@@ -1,0 +1,72 @@
+{
+  "SmartTileRefine": {
+    "display_name": "Tile Refine",
+    "inputs": {
+      "image": {
+        "name": "Image"
+      },
+      "model": {
+        "name": "Model"
+      },
+      "positive": {
+        "name": "Positive"
+      },
+      "negative": {
+        "name": "Negative"
+      },
+      "vae": {
+        "name": "VAE"
+      },
+      "upscale_model": {
+        "name": "Upscale model"
+      },
+      "upscale_by": {
+        "name": "Upscale factor"
+      },
+      "columns": {
+        "name": "Columns"
+      },
+      "rows": {
+        "name": "Rows"
+      },
+      "expand_percent": {
+        "name": "Tile extension"
+      },
+      "redraw_mode": {
+        "name": "Redraw method"
+      },
+      "seed": {
+        "name": "Seed"
+      },
+      "steps": {
+        "name": "Steps"
+      },
+      "cfg": {
+        "name": "CFG"
+      },
+      "sampler_name": {
+        "name": "Sampler"
+      },
+      "scheduler": {
+        "name": "Scheduler"
+      },
+      "denoise": {
+        "name": "Denoise"
+      },
+      "color_correction": {
+        "name": "Color correction"
+      },
+      "color_strength": {
+        "name": "Correction strength"
+      },
+      "batch_size": {
+        "name": "Tiles per pass"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image"
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "SmartTileRefine": {
+    "display_name": "分块高清重绘",
+    "inputs": {
+      "image": {
+        "name": "图像"
+      },
+      "model": {
+        "name": "模型"
+      },
+      "positive": {
+        "name": "正面条件"
+      },
+      "negative": {
+        "name": "负面条件"
+      },
+      "vae": {
+        "name": "VAE"
+      },
+      "upscale_model": {
+        "name": "放大模型"
+      },
+      "upscale_by": {
+        "name": "放大倍率"
+      },
+      "columns": {
+        "name": "横向块数"
+      },
+      "rows": {
+        "name": "纵向块数"
+      },
+      "expand_percent": {
+        "name": "分块延展"
+      },
+      "redraw_mode": {
+        "name": "重绘方式"
+      },
+      "seed": {
+        "name": "种子"
+      },
+      "steps": {
+        "name": "步数"
+      },
+      "cfg": {
+        "name": "CFG"
+      },
+      "sampler_name": {
+        "name": "采样器"
+      },
+      "scheduler": {
+        "name": "调度器"
+      },
+      "denoise": {
+        "name": "重绘强度"
+      },
+      "color_correction": {
+        "name": "颜色校正"
+      },
+      "color_strength": {
+        "name": "校正强度"
+      },
+      "batch_size": {
+        "name": "单次数量"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      }
+    }
+  }
+}

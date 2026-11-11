@@ -1,0 +1,2 @@
+# Uses torch, numpy, Pillow and aiohttp supplied by ComfyUI.
+comfyui-frontend-package>=1.55.17

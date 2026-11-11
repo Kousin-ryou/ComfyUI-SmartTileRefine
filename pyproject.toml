@@ -1,0 +1,20 @@
+[project]
+name = "smart-tile-refine"
+version = "1.0.0"
+description = "Integrated img2img tiled refinement with an interactive in-node preview"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+readme = "README.md"
+authors = [{ name = "Kousin-ryou" }]
+dependencies = ["comfyui-frontend-package>=1.55.17"]
+classifiers = ["Operating System :: OS Independent", "Programming Language :: Python :: 3"]
+
+[project.urls]
+Repository = "https://github.com/Kousin-ryou/ComfyUI-SmartTileRefine"
+Documentation = "https://github.com/Kousin-ryou/ComfyUI-SmartTileRefine/blob/main/docs/usage.md"
+"Bug Tracker" = "https://github.com/Kousin-ryou/ComfyUI-SmartTileRefine/issues"
+
+[tool.comfy]
+DisplayName = "Smart Tile Refine"
+requires-comfyui = ">=0.41.0"
+Icon = "https://raw.githubusercontent.com/Kousin-ryou/ComfyUI-SmartTileRefine/main/docs/assets/icon.png"

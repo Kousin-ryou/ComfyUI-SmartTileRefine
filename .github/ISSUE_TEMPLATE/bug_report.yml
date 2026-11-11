@@ -1,0 +1,27 @@
+name: Bug report / 问题反馈
+description: Report a reproducible node or preview issue.
+body:
+  - type: textarea
+    id: behavior
+    attributes:
+      label: What happened? / 问题现象
+      description: Include expected behavior and reproduction steps.
+    validations:
+      required: true
+  - type: textarea
+    id: versions
+    attributes:
+      label: Environment / 环境
+      description: ComfyUI and frontend versions, OS, GPU/VRAM, model family and node version.
+    validations:
+      required: true
+  - type: textarea
+    id: settings
+    attributes:
+      label: Tile settings / 分块参数
+      description: Input/output sizes, columns/rows, extension, redraw method, denoise and tiles per pass.
+  - type: textarea
+    id: log
+    attributes:
+      label: Error or screenshot / 报错或截图
+      description: Remove secrets, personal paths and private prompts before posting.
